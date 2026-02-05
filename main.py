@@ -25,7 +25,7 @@ st.markdown("""
     body, html, .main {
         background: #f8f9fa;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        color: #2c3e50;
+        color: #000000;
     }
     
     /* Sidebar */
@@ -36,23 +36,23 @@ st.markdown("""
     
     /* Main headers */
     h1 {
-        color: #1a202c;
-        font-weight: 700;
+        color: #000000;
+        font-weight: 800;
         letter-spacing: -0.5px;
         font-size: 2.5em !important;
         margin-bottom: 10px !important;
     }
     
     h2 {
-        color: #2d3748;
-        font-weight: 600;
+        color: #000000;
+        font-weight: 700;
         font-size: 1.8em !important;
         margin-bottom: 15px !important;
     }
     
     h3 {
-        color: #2d3748;
-        font-weight: 600;
+        color: #000000;
+        font-weight: 800;
         font-size: 1.3em !important;
         margin-top: 20px !important;
     }
@@ -66,7 +66,7 @@ st.markdown("""
     }
     
     .stTabs [data-baseweb="tab"] {
-        color: #718096;
+        color: #000000;
         border-radius: 0px;
         font-weight: 600;
         padding: 14px 20px;
@@ -103,7 +103,7 @@ st.markdown("""
     /* Input boxes */
     textarea, input {
         background-color: #ffffff !important;
-        color: #2c3e50 !important;
+        color: #000000 !important;
         border: 1px solid #cbd5e0 !important;
         border-radius: 6px !important;
         padding: 12px !important;
@@ -183,15 +183,15 @@ st.markdown("""
     
     .metric-value {
         font-size: 2.2em;
-        font-weight: 700;
-        color: #3182ce;
+        font-weight: 800;
+        color: #000000;
         margin: 10px 0;
     }
     
     .metric-label {
-        color: #718096;
+        color: #000000;
         font-size: 0.85em;
-        font-weight: 600;
+        font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 0.5px;
     }
@@ -228,7 +228,7 @@ st.markdown("""
     
     /* Text styling */
     p, span, li {
-        color: #4a5568;
+        color: #1a202c;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -352,9 +352,9 @@ with st.sidebar:
     st.markdown("<div class='divider-line'></div>", unsafe_allow_html=True)
     
     st.markdown("""
-    <div style="color: #2c3e50;">
-        <p style="font-weight: 600; color: #2d3748; margin-bottom: 10px; font-size: 0.95em;">✨ CAPABILITIES</p>
-        <ul style="margin: 0; padding-left: 20px; color: #4a5568; font-size: 0.9em;">
+    <div style="color: #000000;">
+        <p style="font-weight: 800; color: #000000; margin-bottom: 10px; font-size: 0.95em;">✨ CAPABILITIES</p>
+        <ul style="margin: 0; padding-left: 20px; color: #000000; font-size: 0.9em; font-weight: 700;">
             <li>Real-time Detection</li>
             <li>AI Analysis</li>
             <li>Message Tracking</li>
@@ -367,11 +367,11 @@ with st.sidebar:
     st.markdown("<div class='divider-line'></div>", unsafe_allow_html=True)
     
     st.markdown("""
-    <div style="color: #2c3e50;">
-        <p style="font-weight: 600; color: #2d3748; margin-bottom: 5px; font-size: 0.95em;">⚙️ CONFIGURATION</p>
-        <p style="font-size: 0.85em; margin: 5px 0; color: #4a5568;">Model: Groq Llama 3.1</p>
-        <p style="font-size: 0.85em; margin: 5px 0; color: #4a5568;">Framework: Streamlit</p>
-        <p style="font-size: 0.85em; margin: 5px 0; color: #48bb78; font-weight: 500;">Status: 🟢 Active</p>
+    <div style="color: #000000;">
+        <p style="font-weight: 800; color: #000000; margin-bottom: 5px; font-size: 0.95em;">⚙️ CONFIGURATION</p>
+        <p style="font-size: 0.85em; margin: 5px 0; color: #000000; font-weight: 700;">Model: Groq Llama 3.1</p>
+        <p style="font-size: 0.85em; margin: 5px 0; color: #000000; font-weight: 700;">Framework: Streamlit</p>
+        <p style="font-size: 0.85em; margin: 5px 0; color: #000000; font-weight: 800;">Status: 🟢 Active</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -426,8 +426,8 @@ with tab1:
             # Display scammer message
             st.markdown("""
             <div class="scam-card">
-                <p style="font-weight: 600; color: #c53030; margin: 0 0 10px 0; font-size: 0.95em;">📧 INCOMING MESSAGE</p>
-                <p style="color: #742a2a; font-family: monospace; font-size: 1em; margin: 0; line-height: 1.6;">""" + 
+                <p style="font-weight: 700; color: #7c2d12; margin: 0 0 10px 0; font-size: 0.95em;">📧 INCOMING MESSAGE</p>
+                <p style="color: #000000; font-family: monospace; font-size: 1em; margin: 0; line-height: 1.6; font-weight: 700;">""" +
                 scammer_msg + 
                 """</p>
             </div>
@@ -446,21 +446,21 @@ with tab1:
                         st.markdown("""
                         <div class="metric-box" style="border-color: rgba(239, 68, 68, 0.6);">
                             <p style="margin: 0; font-size: 2em;">🚨</p>
-                            <p style="margin: 10px 0 0 0; font-weight: 700; color: #dc2626;">SCAM DETECTED</p>
+                            <p style="margin: 10px 0 0 0; font-weight: 800; color: #000000;">SCAM DETECTED</p>
                         </div>
                         """, unsafe_allow_html=True)
                     else:
                         st.markdown("""
                         <div class="metric-box" style="border-color: rgba(34, 197, 94, 0.6);">
                             <p style="margin: 0; font-size: 2em;">✅</p>
-                            <p style="margin: 10px 0 0 0; font-weight: 700; color: #22863a;">LEGITIMATE</p>
+                            <p style="margin: 10px 0 0 0; font-weight: 800; color: #000000;">LEGITIMATE</p>
                         </div>
                         """, unsafe_allow_html=True)
                 
                 with col_b:
                     confidence = fraud_result['confidence']
                     confidence_percent = confidence * 100
-                    color = "#dc2626" if confidence > 0.7 else "#f97316" if confidence > 0.5 else "#48bb78"
+                    color = "#991b1b" if confidence > 0.7 else "#b45309" if confidence > 0.5 else "#065f46"
                     st.markdown(f"""
                     <div class="metric-box">
                         <p class="metric-label">CONFIDENCE SCORE</p>
@@ -475,7 +475,7 @@ with tab1:
                     st.markdown(f"""
                     <div class="metric-box">
                         <p class="metric-label">CATEGORY</p>
-                        <p style="font-size: 1.8em; margin: 15px 0; color: #3182ce;">{category.upper()}</p>
+                        <p style="font-size: 1.8em; margin: 15px 0; color: #000000; font-weight: 800;">{category.upper()}</p>
                     </div>
                     """, unsafe_allow_html=True)
                 
@@ -486,8 +486,8 @@ with tab1:
                     honeypot_reply = st.session_state.honeypot_agent.reply(scammer_msg)
                     st.markdown("""
                     <div class="honeypot-card">
-                        <p style="font-weight: 600; color: #22863a; margin: 0 0 10px 0; font-size: 0.95em;">🤖 HONEYPOT RESPONSE</p>
-                        <p style="color: #355c3d; font-style: italic; font-size: 1em; margin: 0; line-height: 1.6;">""" + 
+                        <p style="font-weight: 800; color: #000000; margin: 0 0 10px 0; font-size: 0.95em;">🤖 HONEYPOT RESPONSE</p>
+                        <p style="color: #000000; font-style: italic; font-size: 1em; margin: 0; line-height: 1.6; font-weight: 700;"""" +
                         honeypot_reply + 
                         """</p>
                     </div>
@@ -554,14 +554,14 @@ with tab2:
                             st.markdown("""
                             <div class="metric-box" style="border-color: rgba(239, 68, 68, 0.6);">
                                 <p style="margin: 0; font-size: 2em;">🚨</p>
-                                <p style="margin: 10px 0 0 0; font-weight: 700; color: #dc2626;">SCAM</p>
+                                <p style="margin: 10px 0 0 0; font-weight: 700; color: #991b1b;">SCAM</p>
                             </div>
                             """, unsafe_allow_html=True)
                         else:
                             st.markdown("""
                             <div class="metric-box" style="border-color: rgba(34, 197, 94, 0.6);">
                                 <p style="margin: 0; font-size: 2em;">✅</p>
-                                <p style="margin: 10px 0 0 0; font-weight: 700; color: #22863a;">SAFE</p>
+                                <p style="margin: 10px 0 0 0; font-weight: 700; color: #065f46;">SAFE</p>
                             </div>
                             """, unsafe_allow_html=True)
                     
