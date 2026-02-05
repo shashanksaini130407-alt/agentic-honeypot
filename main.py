@@ -14,7 +14,7 @@ if not os.getenv("GROQ_API_KEY"):
     st.stop()
 
 # Import your existing agents
-fr================= API KEY PROTECTION =================
+# ================= API KEY PROTECTION =================
 MY_API_KEY = "HCLGUVI2026!"  # <-- Your secret key
 
 # Ask user to enter API key
