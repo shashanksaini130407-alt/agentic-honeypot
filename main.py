@@ -14,6 +14,16 @@ if not os.getenv("GROQ_API_KEY"):
     st.info("Please set GROQ_API_KEY in your environment or .env file")
     st.stop()
 
+# ================= API KEY PROTECTION =================
+MY_API_KEY = "HCLGUVI2026!"  # <-- Your secret key
+
+# Ask user to enter API key
+user_key = st.text_input("🔑 Enter API Key to access the app:", type="password")
+
+if user_key != MY_API_KEY:
+    st.warning("⚠️ Invalid API Key. Please enter the correct key to continue.")
+    st.stop()  # Stop the rest of the app from loading
+
 # Import your existing agents
 from agent.fraud_agent import FraudDetectionAgent
 from agent.llm_honeypot_agent import LLMHoneypotAgent
