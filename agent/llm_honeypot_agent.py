@@ -16,9 +16,6 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 GROQ_MODEL = "llama-3.1-8b-instant"  # You can change to another Groq model if desired
 
-if not GROQ_API_KEY:
-    raise ValueError("GROQ_API_KEY not found. Please set it in .env file or environment variables.")
-
 MOCK_SCAMMER_API = "http://localhost:5000/mock_scammer"  # Example API
 
 # ------------------------ Scammer Profiler ------------------------

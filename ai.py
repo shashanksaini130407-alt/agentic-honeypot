@@ -10,9 +10,6 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 MODEL = "llama-3.1-8b-instant"
 
-if not GROQ_API_KEY:
-    raise ValueError("GROQ_API_KEY not found. Please set it in .env file or environment variables.")
-
 headers = {
     "Authorization": f"Bearer {GROQ_API_KEY}",
     "Content-Type": "application/json"

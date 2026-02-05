@@ -8,6 +8,12 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
+# Check if API key is set
+if not os.getenv("GROQ_API_KEY"):
+    st.error("⚠️ Missing GROQ_API_KEY environment variable!")
+    st.info("Please set GROQ_API_KEY in your environment or .env file")
+    st.stop()
+
 # Import your existing agents
 from agent.fraud_agent import FraudDetectionAgent
 from agent.llm_honeypot_agent import LLMHoneypotAgent
