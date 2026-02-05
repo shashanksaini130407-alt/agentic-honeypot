@@ -66,6 +66,10 @@ if st.button("Fetch Message from Mock API"):
                 st.write("**Honeypot Reply:**", reply)
         else:
             st.info("No more messages from mock API.")
+    except requests.exceptions.ConnectionError:
+        st.warning("⚠️ Mock Scammer API not available (localhost:5000)")
+        st.info("This feature requires a local Flask server running on http://localhost:5000")
+        st.info("To test locally: Run `python mock_scammer.py` in another terminal")
     except Exception as e:
         st.error(f"Error fetching message: {e}")
 
