@@ -21,259 +21,155 @@ from agent.llm_honeypot_agent import LLMHoneypotAgent
 # Advanced Custom CSS for Professional Design
 st.markdown("""
 <style>
-    /* Base styling - Premium gradient background */
+    /* Base styling */
     body, html, .main {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-        font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        background: #f8f9fa;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         color: #000000;
     }
     
-    /* Sidebar - Modern glassmorphism */
+    /* Sidebar */
     [data-testid="stSidebar"] {
-        background: rgba(255, 255, 255, 0.95) !important;
-        backdrop-filter: blur(10px);
-        border-right: 1px solid rgba(226, 232, 240, 0.5);
+        background: linear-gradient(180deg, #ffffff 0%, #f5f7fa 100%);
+        border-right: 1px solid #e1e8ed;
     }
     
-    /* Main headers - Premium white */
+    /* Main headers */
     h1 {
         color: #ffffff !important;
-        font-weight: 900;
-        letter-spacing: -1px;
-        font-size: 3.5em !important;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        font-size: 2.5em !important;
         margin-bottom: 10px !important;
-        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
-    
-    h1 * {
-        color: #ffffff !important;
-        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
-    
-    h1 span {
-        color: #ffffff !important;
-        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
     
     h2 {
-        color: #ffffff;
+        color: #000000;
         font-weight: 700;
-        font-size: 2.2em !important;
+        font-size: 1.8em !important;
         margin-bottom: 15px !important;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
     
     h3 {
-        color: #ffffff;
+        color: #000000;
         font-weight: 800;
-        font-size: 1.5em !important;
+        font-size: 1.3em !important;
         margin-top: 20px !important;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
     
-    /* Tabs styling - Modern */
+    /* Tabs styling */
     .stTabs [data-baseweb="tab-list"] {
-        background: rgba(255, 255, 255, 0.1);
-        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-        border-radius: 12px;
-        padding: 4px;
+        background: #ffffff;
+        border-bottom: 2px solid #e1e8ed;
+        border-radius: 0px;
+        padding: 0px;
     }
     
     .stTabs [data-baseweb="tab"] {
-        color: #ffffff;
-        border-radius: 8px;
-        font-weight: 700;
-        padding: 12px 24px;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        border-bottom: none;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 0.95em;
-    }
-    
-    .stTabs [data-baseweb="tab"]:hover {
-        background: rgba(255, 255, 255, 0.15);
+        color: #000000;
+        border-radius: 0px;
+        font-weight: 600;
+        padding: 14px 20px;
+        transition: all 0.3s ease;
+        border-bottom: 3px solid transparent;
     }
     
     .stTabs [aria-selected="true"] {
-        background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-        color: #ffffff;
-        border-bottom: none;
-        box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+        background: transparent;
+        color: #2d3748;
+        border-bottom: 3px solid #3182ce !important;
     }
     
-    /* Buttons - Premium gradient */
+    /* Buttons */
     .stButton > button {
-        background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+        background: #3182ce;
         color: white;
-        font-weight: 700;
+        font-weight: 600;
         border: none;
-        border-radius: 10px;
-        padding: 14px 32px;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
-        text-transform: uppercase;
-        letter-spacing: 1px;
+        border-radius: 6px;
+        padding: 10px 24px;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(49, 130, 206, 0.15);
+        text-transform: none;
+        letter-spacing: 0px;
         font-size: 0.95em;
     }
     
     .stButton > button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5);
-        background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+        background: #2c5aa0;
+        box-shadow: 0 4px 12px rgba(49, 130, 206, 0.25);
     }
     
-    .stButton > button:active {
-        transform: translateY(0);
-    }
-    
-    /* Input boxes - Modern with glow */
+    /* Input boxes */
     textarea, input {
-        background-color: rgba(255, 255, 255, 0.95) !important;
+        background-color: #ffffff !important;
         color: #000000 !important;
-        border: 2px solid rgba(226, 232, 240, 0.5) !important;
-        border-radius: 10px !important;
-        padding: 14px !important;
+        border: 1px solid #cbd5e0 !important;
+        border-radius: 6px !important;
+        padding: 12px !important;
         font-size: 1em !important;
         transition: all 0.3s ease !important;
     }
     
     textarea:focus, input:focus {
-        border-color: #06b6d4 !important;
-        box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.1), 0 0 20px rgba(6, 182, 212, 0.3) !important;
-        background-color: #ffffff !important;
+        border-color: #3182ce !important;
+        box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1) !important;
     }
     
-    /* Premium Cards - Glassmorphism */
+    /* Premium Cards */
     .premium-card {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(226, 232, 240, 0.5);
-        border-radius: 16px;
-        padding: 28px;
+        background: #ffffff;
+        border: 1px solid #e1e8ed;
+        border-radius: 8px;
+        padding: 24px;
         margin: 15px 0;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
     }
     
     .premium-card:hover {
-        border-color: #06b6d4;
-        box-shadow: 0 12px 48px rgba(6, 182, 212, 0.2);
-        transform: translateY(-4px);
+        border-color: #cbd5e0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
     
-    /* Scam message card - Gradient */
+    /* Scam message card */
     .scam-card {
-        background: linear-gradient(135deg, rgba(254, 226, 226, 0.9) 0%, rgba(254, 205, 211, 0.8) 100%);
-        border: 2px solid rgba(244, 114, 114, 0.4);
-        border-radius: 12px;
-        padding: 20px;
-        margin: 15px 0;
-        box-shadow: 0 4px 20px rgba(239, 68, 68, 0.15);
+        background: #fff5f5;
+        border: 1px solid #fc8181;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 12px 0;
     }
     
-    /* Honeypot response card - Gradient */
+    /* Honeypot response card */
     .honeypot-card {
-        background: linear-gradient(135deg, rgba(240, 253, 244, 0.9) 0%, rgba(220, 252, 231, 0.8) 100%);
-        border: 2px solid rgba(34, 197, 94, 0.4);
-        border-radius: 12px;
-        padding: 20px;
-        margin: 15px 0;
-        box-shadow: 0 4px 20px rgba(34, 197, 94, 0.15);
+        background: #f0fff4;
+        border: 1px solid #9ae6b4;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 12px 0;
     }
     
     /* Confidence meter */
     .confidence-meter {
-        background: rgba(226, 232, 240, 0.3);
-        border-radius: 10px;
+        background: #e2e8f0;
+        border-radius: 4px;
         overflow: hidden;
-        height: 10px;
-        margin: 12px 0;
-        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        height: 8px;
+        margin: 10px 0;
     }
     
     .confidence-fill {
         height: 100%;
-        background: linear-gradient(90deg, #ef4444 0%, #f97316 50%, #22c55e 100%);
-        transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+        background: linear-gradient(90deg, #f56565 0%, #ed8936 50%, #48bb78 100%);
+        transition: width 0.6s ease;
     }
     
-    /* Metric cards - Modern */
+    /* Metric cards */
     .metric-box {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
-        border: 2px solid rgba(226, 232, 240, 0.5);
-        border-radius: 16px;
-        padding: 24px;
-        text-align: center;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    }
-    
-    .metric-box:hover {
-        transform: translateY(-8px);
-        border-color: #06b6d4;
-        box-shadow: 0 12px 40px rgba(6, 182, 212, 0.2);
-    }
-    
-    .metric-value {
-        font-size: 2.8em;
-        font-weight: 900;
-        color: #06b6d4;
-        margin: 12px 0;
-    }
-    
-    .metric-label {
-        color: #000000;
-        font-size: 0.9em;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-    }
-    
-    /* Conversation item */
-    .conversation-item {
-        padding: 16px;
-        margin: 10px 0;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 12px;
-        border-left: 5px solid #06b6d4;
-        color: #000000;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
-    }
-    
-    .conversation-item:hover {
-        box-shadow: 0 4px 20px rgba(6, 182, 212, 0.15);
-        transform: translateX(4px);
-    }
-    
-    /* Divider line */
-    .divider-line {
-        height: 2px;
-        background: linear-gradient(90deg, transparent 0%, rgba(226, 232, 240, 0.5) 50%, transparent 100%);
-        margin: 20px 0;
-    }
-    
-    /* Info boxes */
-    .stInfo {
-        background: rgba(206, 250, 254, 0.2) !important;
-        border-left: 4px solid #06b6d4 !important;
-    }
-    
-    /* Warning boxes */
-    .stWarning {
-        background: rgba(254, 243, 199, 0.2) !important;
-        border-left: 4px solid #f59e0b !important;
-    }
-    
-    /* Error boxes */
-    .stError {
-        background: rgba(254, 226, 226, 0.2) !important;
-        border-left: 4px solid #ef4444 !important;
-    }
-</style>
-""", unsafe_allow_html=True)
+        background: #ffffff;
+        border: 1px solid #e1e8ed;
+        border-radius: 8px;
         padding: 16px;
         text-align: center;
         transition: all 0.3s ease;
@@ -398,23 +294,18 @@ st.set_page_config(
 
 # Header Section with Premium Graphics
 st.markdown("""
-    <div style="text-align: center; padding: 60px 20px; margin: -20px -20px 0 -20px; 
-                background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-                border-bottom: 3px solid rgba(6, 182, 212, 0.3);
-                position: relative;
-                overflow: hidden;">
-        <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(6, 182, 212, 0.05) 0%, transparent 70%);"></div>
-        <div style="position: relative; z-index: 1;">
-            <h1 style="font-size: 3.8em; margin: 0; color: #ffffff !important; font-weight: 900; text-shadow: 0 8px 24px rgba(6, 182, 212, 0.3);">
-                🕷️ <span style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 900;">Honeypot Intelligence Platform</span>
-            </h1>
-            <p style="color: #cbd5e0; font-size: 1.3em; margin: 16px 0 8px 0; font-weight: 600; letter-spacing: 0.5px;">
-                🎯 Advanced Fraud Detection & AI-Powered Response
-            </p>
-            <p style="color: #94a3b8; font-size: 1.05em; margin: 0; font-weight: 500; letter-spacing: 0.3px;">
-                Enterprise-Grade Scam Detection • Real-Time Analysis • Autonomous Honeypot
-            </p>
-        </div>
+    <div style="text-align: center; padding: 40px 20px; margin: -20px -20px 0 -20px; 
+                background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+                border-bottom: none;">
+        <h1 style="font-size: 3em; margin: 0; color: #ffffff !important;">
+            🕷️ <span style="color: #ffffff !important; font-weight: 800;">Honeypot Intelligence Platform</span>
+        </h1>
+        <p style="color: #cbd5e0; font-size: 1.1em; margin: 12px 0 5px 0; font-weight: 500;">
+            Advanced Fraud Detection & Analysis System
+        </p>
+        <p style="color: #a0aec0; font-size: 0.95em; margin: 0;">
+            Enterprise-Grade Scam Detection and Real-Time Response
+        </p>
     </div>
 """, unsafe_allow_html=True)
 
@@ -849,22 +740,13 @@ with tab4:
 
 # Footer
 st.markdown("""
-    <div style="text-align: center; padding: 50px 20px; margin-top: 60px; 
-                border-top: 2px solid rgba(6, 182, 212, 0.3); background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-                position: relative; overflow: hidden;">
-        <div style="position: absolute; bottom: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(6, 182, 212, 0.05) 0%, transparent 70%);"></div>
-        <div style="position: relative; z-index: 1;">
-            <p style="color: #ffffff; margin: 0; font-weight: 900; font-size: 1.3em; letter-spacing: 1px;">
-                🕷️ <span style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 900;">Honeypot Intelligence Platform</span> v1.0
-            </p>
-            <p style="color: #94a3b8; font-size: 0.95em; margin: 12px 0 0 0; font-weight: 500; letter-spacing: 0.5px;">
-                🚀 Enterprise Fraud Detection • 🤖 Powered by Groq AI • 🛡️ Advanced Scam Analysis
-            </p>
-            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(226, 232, 240, 0.2);">
-                <p style="color: #64748b; font-size: 0.85em; margin: 0;">
-                    © 2025 Agentic Honeypot • Real-Time Fraud Detection System
-                </p>
-            </div>
-        </div>
+    <div style="text-align: center; padding: 30px 20px; margin-top: 40px; 
+                border-top: 1px solid #e1e8ed; background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);">
+        <p style="color: #ffffff; margin: 0; font-weight: 700; font-size: 1em;">
+            🕷️ <span style="color: #ffffff;">Honeypot Intelligence Platform</span> v1.0
+        </p>
+        <p style="color: #cbd5e0; font-size: 0.9em; margin: 8px 0 0 0;">
+            Enterprise Fraud Detection • Powered by Groq AI
+        </p>
     </div>
 """, unsafe_allow_html=True)
