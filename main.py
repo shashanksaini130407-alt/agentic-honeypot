@@ -77,13 +77,16 @@ st.set_page_config(page_title="Agentic Honeypot Dashboard", layout="wide")
 st.title("🚦 Agentic Honeypot - Scam Flow Controller")
 st.markdown("AI-powered honeypot that detects and engages with scammers")
 
-# Initialize agents
+# Initialize agents and session state
 if "controller_initialized" not in st.session_state:
     st.session_state.fraud_agent = FraudDetectionAgent()
     st.session_state.honeypot_agent = LLMHoneypotAgent()
-    st.session_state.controller_initialized = True
     st.session_state.conversation_history = []
-    st.success("✅ Agents Initialized!")
+    st.session_state.controller_initialized = True
+
+# Ensure conversation_history exists
+if "conversation_history" not in st.session_state:
+    st.session_state.conversation_history = []
 
 # Sidebar
 with st.sidebar:
