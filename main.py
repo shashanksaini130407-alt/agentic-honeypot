@@ -36,22 +36,22 @@ st.markdown("""
     
     /* Main headers */
     h1 {
-        color: #FFFFFF !important;
-        font-weight: 800;
-        letter-spacing: -0.5px;
-        font-size: 2.5em !important;
-        margin-bottom: 10px !important;
+        color: rgb(255, 255, 255) !important;
+        font-weight: 900 !important;
+        font-size: 2.8em !important;
+        letter-spacing: -1px !important;
+        margin: 0 !important;
     }
     
     h2 {
-        color: #000000;
+        color: rgb(255, 255, 255) !important;
         font-weight: 700;
         font-size: 1.8em !important;
         margin-bottom: 15px !important;
     }
     
     h3 {
-        color: #000000;
+        color: rgb(255, 255, 255) !important;
         font-weight: 800;
         font-size: 1.3em !important;
         margin-top: 20px !important;
@@ -66,7 +66,7 @@ st.markdown("""
     }
     
     .stTabs [data-baseweb="tab"] {
-        color: #000000;
+        color: rgb(255, 255, 255) !important;
         border-radius: 0px;
         font-weight: 600;
         padding: 14px 20px;
