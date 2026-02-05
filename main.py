@@ -2,6 +2,11 @@ import streamlit as st
 from datetime import datetime
 import json
 import requests
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Import your existing agents
 from agent.fraud_agent import FraudDetectionAgent
