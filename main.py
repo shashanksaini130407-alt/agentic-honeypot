@@ -403,8 +403,6 @@ with tab1:
         """)
     
     with col_main:
-    
-    with col_main:
         st.write("Click to generate and analyze realistic scam messages:")
         
         if st.button("🔄 GENERATE & ANALYZE", key="mock_fetch", use_container_width=True):
