@@ -36,7 +36,7 @@ st.markdown("""
     
     /* Main headers */
     h1 {
-        color: #000000;
+        color: #ffffff !important;
         font-weight: 800;
         letter-spacing: -0.5px;
         font-size: 2.5em !important;
