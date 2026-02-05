@@ -487,7 +487,7 @@ with tab1:
                     st.markdown("""
                     <div class="honeypot-card">
                         <p style="font-weight: 800; color: #000000; margin: 0 0 10px 0; font-size: 0.95em;">🤖 HONEYPOT RESPONSE</p>
-                        <p style="color: #000000; font-style: italic; font-size: 1em; margin: 0; line-height: 1.6; font-weight: 700;"""" +
+                        <p style="color: #000000; font-style: italic; font-size: 1em; margin: 0; line-height: 1.6; font-weight: 700;">""" +
                         honeypot_reply + 
                         """</p>
                     </div>
