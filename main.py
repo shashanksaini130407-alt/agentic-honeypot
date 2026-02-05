@@ -590,7 +590,7 @@ with tab2:
                         honeypot_reply = st.session_state.honeypot_agent.reply(user_message)
                         st.markdown(f"""
                         <div class="honeypot-card">
-                            <p style="font-weight: 600; color: #22863a; margin: 0 0 10px 0;">🤖 AI RESPONSE</p>
+                            <p style="font-weight: 600; color: #22863a; margin: 0 0 10px 0;">🤖 HONEYPOT RESPONSE</p>
                             <p style="color: #355c3d; font-style: italic; margin: 0;">"{honeypot_reply}"</p>
                         </div>
                         """, unsafe_allow_html=True)
