@@ -297,8 +297,8 @@ st.markdown("""
     <div style="text-align: center; padding: 40px 20px; margin: -20px -20px 0 -20px; 
                 background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
                 border-bottom: none;">
-        <h1 style="font-size: 3em; margin: 0; color: #FFFFFF !important; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); letter-spacing: 2px; font-weight: 900;">
-            <span style="color: #FFFFFF !important;">🕷️ Honeypot Intelligence Platform</span>
+        <h1 style="font-size: 3em; margin: 0; color: #ffffff !important;">
+            🕷️ <span style="color: #ffffff !important; font-weight: 800;">Honeypot Intelligence Platform</span>
         </h1>
         <p style="color: #cbd5e0; font-size: 1.1em; margin: 12px 0 5px 0; font-weight: 500;">
             Advanced Fraud Detection & Analysis System
