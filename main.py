@@ -336,8 +336,7 @@ class MockScammerGenerator:
 st.set_page_config(
     page_title="Honeypot Intelligence Platform",
     layout="wide",
-    initial_sidebar_state="expanded",
-    initial_sidebar_width=280
+    initial_sidebar_state="expanded"
 )
 
 # Professional Header
