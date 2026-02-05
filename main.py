@@ -191,6 +191,3 @@ with tab3:
                 st.write(msg)
     else:
         st.info("No messages processed yet. Start with the Mock Scammer or Manual Input!")
-                st.json(json.loads(line))
-    except FileNotFoundError:
-        st.info("No logs yet.")
