@@ -458,6 +458,9 @@ with tab1:
                         """, unsafe_allow_html=True)
                 
                 with col_b:
+                    confidence = fraud_result['confidence']
+                    confidence_percent = confidence * 100
+                    color = "#dc2626" if confidence > 0.7 else "#f97316" if confidence > 0.5 else "#48bb78"
                     st.markdown(f"""
                     <div class="metric-box">
                         <p class="metric-label">CONFIDENCE SCORE</p>
