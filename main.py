@@ -694,15 +694,15 @@ with tab4:
             st.markdown(f"""
             <div class="premium-card">
                 <div style="display: flex; justify-content: space-between; margin: 10px 0; padding: 10px; background: rgba(239, 68, 68, 0.1); border-radius: 8px;">
-                    <span style="color: #e2e8f0;">🔴 Scams Detected</span>
-                    <span style="color: #ef4444; font-weight: 700; font-size: 1.2em;">{scam_count}</span>
+                    <span style="color: #000000; font-weight: 700;">🔴 Scams Detected</span>
+                    <span style="color: #000000; font-weight: 800; font-size: 1.2em;">{scam_count}</span>
                 </div>
                 <div style="display: flex; justify-content: space-between; margin: 10px 0; padding: 10px; background: rgba(34, 197, 94, 0.1); border-radius: 8px;">
-                    <span style="color: #e2e8f0;">🟢 Legitimate</span>
-                    <span style="color: #22c55e; font-weight: 700; font-size: 1.2em;">{safe_count}</span>
+                    <span style="color: #000000; font-weight: 700;">🟢 Legitimate</span>
+                    <span style="color: #000000; font-weight: 800; font-size: 1.2em;">{safe_count}</span>
                 </div>
                 <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(96, 165, 250, 0.2);">
-                    <p style="color: #a0aec0; font-size: 0.9em; margin: 0;">Detection Rate: <span style="color: #60a5fa; font-weight: 700;">{(scam_count/total_msgs*100):.1f}%</span></p>
+                    <p style="color: #000000; font-weight: 700; font-size: 0.9em; margin: 0;">Detection Rate: <span style="color: #000000; font-weight: 800;">{(scam_count/total_msgs*100):.1f}%</span></p>
                 </div>
             </div>
             """, unsafe_allow_html=True)
@@ -716,16 +716,16 @@ with tab4:
             st.markdown(f"""
             <div class="premium-card">
                 <div style="display: flex; justify-content: space-between; margin: 10px 0; padding: 10px; background: rgba(239, 68, 68, 0.1); border-radius: 8px;">
-                    <span style="color: #e2e8f0;">🔴 High (>80%)</span>
-                    <span style="color: #ef4444; font-weight: 700; font-size: 1.2em;">{high_conf}</span>
+                    <span style="color: #000000; font-weight: 700;">🔴 High (>80%)</span>
+                    <span style="color: #000000; font-weight: 800; font-size: 1.2em;">{high_conf}</span>
                 </div>
                 <div style="display: flex; justify-content: space-between; margin: 10px 0; padding: 10px; background: rgba(249, 115, 22, 0.1); border-radius: 8px;">
-                    <span style="color: #e2e8f0;">🟡 Medium (50-80%)</span>
-                    <span style="color: #f97316; font-weight: 700; font-size: 1.2em;">{med_conf}</span>
+                    <span style="color: #000000; font-weight: 700;">🟡 Medium (50-80%)</span>
+                    <span style="color: #000000; font-weight: 800; font-size: 1.2em;">{med_conf}</span>
                 </div>
                 <div style="display: flex; justify-content: space-between; margin: 10px 0; padding: 10px; background: rgba(34, 197, 94, 0.1); border-radius: 8px;">
-                    <span style="color: #e2e8f0;">🟢 Low (<50%)</span>
-                    <span style="color: #22c55e; font-weight: 700; font-size: 1.2em;">{low_conf}</span>
+                    <span style="color: #000000; font-weight: 700;">🟢 Low (<50%)</span>
+                    <span style="color: #000000; font-weight: 800; font-size: 1.2em;">{low_conf}</span>
                 </div>
             </div>
             """, unsafe_allow_html=True)
