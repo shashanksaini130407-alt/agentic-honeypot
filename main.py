@@ -4,7 +4,6 @@ import json
 import os
 from dotenv import load_dotenv
 import random
-
 # Load environment variables
 load_dotenv()
 
@@ -14,7 +13,8 @@ if not os.getenv("GROQ_API_KEY"):
     st.info("Please set GROQ_API_KEY in your environment or .env file")
     st.stop()
 
-# ================= API KEY PROTECTION =================
+# Import your existing agents
+fr================= API KEY PROTECTION =================
 MY_API_KEY = "HCLGUVI2026!"  # <-- Your secret key
 
 # Ask user to enter API key
@@ -22,10 +22,9 @@ user_key = st.text_input("🔑 Enter API Key to access the app:", type="password
 
 if user_key != MY_API_KEY:
     st.warning("⚠️ Invalid API Key. Please enter the correct key to continue.")
-    st.stop()  # Stop the rest of the app from loading
+    st.stop()
 
-# Import your existing agents
-from agent.fraud_agent import FraudDetectionAgent
+# om agent.fraud_agent import FraudDetectionAgent
 from agent.llm_honeypot_agent import LLMHoneypotAgent
 
 # Advanced Custom CSS for Professional Design
@@ -339,7 +338,7 @@ with st.sidebar:
     <div style="background: #ffffff; 
                 border-radius: 8px; padding: 16px; margin-bottom: 20px; 
                 border: 1px solid #e1e8ed; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
-        <h3 style="color: #1f2937 !important; margin-top: 0; font-size: 1.2em;">📊 System Dashboard</h3>
+        <h3 style="color: #2d3748 !important; margin-top: 0; font-size: 1.2em;">📊 System Dashboard</h3>
     </div>
     """, unsafe_allow_html=True)
     
@@ -600,7 +599,7 @@ with tab2:
                         honeypot_reply = st.session_state.honeypot_agent.reply(user_message)
                         st.markdown(f"""
                         <div class="honeypot-card">
-                            <p style="font-weight: 600; color: #22863a; margin: 0 0 10px 0;">🤖 HONEYPOT RESPONSE</p>
+                            <p style="font-weight: 600; color: #22863a; margin: 0 0 10px 0;">🤖 AI RESPONSE</p>
                             <p style="color: #355c3d; font-style: italic; margin: 0;">"{honeypot_reply}"</p>
                         </div>
                         """, unsafe_allow_html=True)
