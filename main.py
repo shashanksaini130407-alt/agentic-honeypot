@@ -43,6 +43,14 @@ st.markdown("""
         margin-bottom: 10px !important;
     }
     
+    h1 * {
+        color: #ffffff !important;
+    }
+    
+    h1 span {
+        color: #ffffff !important;
+    }
+    
     h2 {
         color: #000000;
         font-weight: 700;
