@@ -9,3 +9,7 @@ fastapi
 uvicorn
 joblib
 gunicorn
+streamlit
+requests
+langdetect
+python-dotenv
