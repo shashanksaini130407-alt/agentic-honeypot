@@ -9,7 +9,10 @@ fastapi
 uvicorn
 joblib
 gunicorn
-streamlit
+streamlit>=1.28.0
 requests
 langdetect
 python-dotenv
+altair
+plotly
+pydantic
