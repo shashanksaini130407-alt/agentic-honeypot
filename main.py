@@ -743,7 +743,7 @@ st.markdown("""
     <div style="text-align: center; padding: 30px 20px; margin-top: 40px; 
                 border-top: 1px solid #e1e8ed; background: #f8f9fa;">
         <p style="color: #2d3748; margin: 0; font-weight: 600; font-size: 1em;">
-            🕷️ <span style="color: #3182ce;">Honeypot Intelligence Platform</span> v1.0
+            🕷️ <span style="color: #ffffff;">Honeypot Intelligence Platform</span> v1.0
         </p>
         <p style="color: #718096; font-size: 0.9em; margin: 8px 0 0 0;">
             Enterprise Fraud Detection • Powered by Groq AI
