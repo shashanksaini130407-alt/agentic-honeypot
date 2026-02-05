@@ -18,129 +18,142 @@ if not os.getenv("GROQ_API_KEY"):
 from agent.fraud_agent import FraudDetectionAgent
 from agent.llm_honeypot_agent import LLMHoneypotAgent
 
-# Advanced Custom CSS for Premium Graphics
+# Advanced Custom CSS for Professional Design
 st.markdown("""
 <style>
     /* Base styling */
     body, html, .main {
-        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f8f9fa;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        color: #2c3e50;
     }
     
     /* Sidebar */
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #0f172a 0%, #1a1a3e 100%);
-        border-right: 2px solid rgba(96, 165, 250, 0.2);
+        background: linear-gradient(180deg, #ffffff 0%, #f5f7fa 100%);
+        border-right: 1px solid #e1e8ed;
     }
     
     /* Main headers */
-    h1, h2, h3 {
-        background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: 800;
-        letter-spacing: -1px;
+    h1 {
+        color: #1a202c;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        font-size: 2.5em !important;
+        margin-bottom: 10px !important;
+    }
+    
+    h2 {
+        color: #2d3748;
+        font-weight: 600;
+        font-size: 1.8em !important;
+        margin-bottom: 15px !important;
+    }
+    
+    h3 {
+        color: #2d3748;
+        font-weight: 600;
+        font-size: 1.3em !important;
+        margin-top: 20px !important;
     }
     
     /* Tabs styling */
     .stTabs [data-baseweb="tab-list"] {
-        background: linear-gradient(90deg, rgba(30, 58, 138, 0.4), rgba(55, 48, 163, 0.4));
-        border-bottom: 2px solid rgba(96, 165, 250, 0.3);
-        border-radius: 12px;
-        padding: 5px;
+        background: #ffffff;
+        border-bottom: 2px solid #e1e8ed;
+        border-radius: 0px;
+        padding: 0px;
     }
     
     .stTabs [data-baseweb="tab"] {
-        color: #cbd5e1;
-        border-radius: 8px;
+        color: #718096;
+        border-radius: 0px;
         font-weight: 600;
-        padding: 12px 20px;
+        padding: 14px 20px;
         transition: all 0.3s ease;
+        border-bottom: 3px solid transparent;
     }
     
     .stTabs [aria-selected="true"] {
-        background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-        color: #fff;
-        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        background: transparent;
+        color: #2d3748;
+        border-bottom: 3px solid #3182ce !important;
     }
     
     /* Buttons */
     .stButton > button {
-        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        background: #3182ce;
         color: white;
-        font-weight: 700;
+        font-weight: 600;
         border: none;
-        border-radius: 10px;
-        padding: 12px 28px;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+        border-radius: 6px;
+        padding: 10px 24px;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(49, 130, 206, 0.15);
+        text-transform: none;
+        letter-spacing: 0px;
         font-size: 0.95em;
     }
     
     .stButton > button:hover {
-        background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
-        transform: translateY(-2px);
+        background: #2c5aa0;
+        box-shadow: 0 4px 12px rgba(49, 130, 206, 0.25);
     }
     
     /* Input boxes */
     textarea, input {
-        background-color: rgba(15, 23, 42, 0.9) !important;
-        color: #e0e7ff !important;
-        border: 2px solid rgba(96, 165, 250, 0.3) !important;
-        border-radius: 10px !important;
+        background-color: #ffffff !important;
+        color: #2c3e50 !important;
+        border: 1px solid #cbd5e0 !important;
+        border-radius: 6px !important;
         padding: 12px !important;
         font-size: 1em !important;
         transition: all 0.3s ease !important;
     }
     
     textarea:focus, input:focus {
-        border-color: rgba(96, 165, 250, 0.8) !important;
-        box-shadow: 0 0 20px rgba(96, 165, 250, 0.3) !important;
+        border-color: #3182ce !important;
+        box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1) !important;
     }
     
     /* Premium Cards */
     .premium-card {
-        background: linear-gradient(135deg, rgba(30, 58, 138, 0.4), rgba(55, 48, 163, 0.4));
-        border: 2px solid rgba(96, 165, 250, 0.4);
-        border-radius: 15px;
-        padding: 25px;
+        background: #ffffff;
+        border: 1px solid #e1e8ed;
+        border-radius: 8px;
+        padding: 24px;
         margin: 15px 0;
-        backdrop-filter: blur(20px);
-        box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
         transition: all 0.3s ease;
     }
     
     .premium-card:hover {
-        border-color: rgba(96, 165, 250, 0.8);
-        box-shadow: 0 12px 48px rgba(59, 130, 246, 0.25);
-        transform: translateY(-4px);
+        border-color: #cbd5e0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
     
     /* Scam message card */
     .scam-card {
-        background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
-        border: 2px solid rgba(239, 68, 68, 0.4);
-        border-radius: 12px;
-        padding: 20px;
+        background: #fff5f5;
+        border: 1px solid #fc8181;
+        border-radius: 8px;
+        padding: 16px;
         margin: 12px 0;
     }
     
     /* Honeypot response card */
     .honeypot-card {
-        background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(22, 163, 74, 0.1));
-        border: 2px solid rgba(34, 197, 94, 0.4);
-        border-radius: 12px;
-        padding: 20px;
+        background: #f0fff4;
+        border: 1px solid #9ae6b4;
+        border-radius: 8px;
+        padding: 16px;
         margin: 12px 0;
     }
     
     /* Confidence meter */
     .confidence-meter {
-        background: linear-gradient(90deg, #1e293b 0%, #0f172a 100%);
-        border-radius: 10px;
+        background: #e2e8f0;
+        border-radius: 4px;
         overflow: hidden;
         height: 8px;
         margin: 10px 0;
@@ -148,37 +161,36 @@ st.markdown("""
     
     .confidence-fill {
         height: 100%;
-        background: linear-gradient(90deg, #ec4899 0%, #f97316 50%, #22c55e 100%);
-        transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        background: linear-gradient(90deg, #f56565 0%, #ed8936 50%, #48bb78 100%);
+        transition: width 0.6s ease;
     }
     
     /* Metric cards */
     .metric-box {
-        background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
-        border: 2px solid rgba(96, 165, 250, 0.4);
-        border-radius: 12px;
-        padding: 20px;
+        background: #ffffff;
+        border: 1px solid #e1e8ed;
+        border-radius: 8px;
+        padding: 16px;
         text-align: center;
         transition: all 0.3s ease;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     }
     
     .metric-box:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(96, 165, 250, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
     }
     
     .metric-value {
-        font-size: 2.5em;
-        font-weight: 800;
-        background: linear-gradient(135deg, #60a5fa, #a78bfa);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-size: 2.2em;
+        font-weight: 700;
+        color: #3182ce;
         margin: 10px 0;
     }
     
     .metric-label {
-        color: #a0aec0;
-        font-size: 0.9em;
+        color: #718096;
+        font-size: 0.85em;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.5px;
@@ -186,36 +198,37 @@ st.markdown("""
     
     /* Conversation item */
     .conversation-item {
-        background: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(55, 48, 163, 0.3));
-        border-left: 4px solid #60a5fa;
-        border-radius: 8px;
-        padding: 15px;
+        background: #ffffff;
+        border-left: 3px solid #3182ce;
+        border-radius: 4px;
+        padding: 12px;
         margin: 10px 0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
         transition: all 0.3s ease;
     }
     
     .conversation-item:hover {
-        border-left-color: #a78bfa;
-        background: linear-gradient(135deg, rgba(30, 58, 138, 0.5), rgba(55, 48, 163, 0.5));
+        border-left-color: #2c5aa0;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
     }
     
     /* Divider */
     .divider-line {
-        height: 2px;
-        background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.5), transparent);
-        margin: 25px 0;
+        height: 1px;
+        background: #e1e8ed;
+        margin: 20px 0;
     }
     
     /* Expander */
     .streamlit-expanderHeader {
-        background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
-        border-radius: 8px;
+        background: #f7fafc;
+        border-radius: 6px;
         padding: 12px !important;
     }
     
     /* Text styling */
-    p, span {
-        color: #e2e8f0;
+    p, span, li {
+        color: #4a5568;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -282,16 +295,16 @@ st.set_page_config(
 # Header Section with Premium Graphics
 st.markdown("""
     <div style="text-align: center; padding: 40px 20px; margin: -20px -20px 0 -20px; 
-                background: linear-gradient(135deg, #1e3a8a 0%, #312e81 50%, #1e3a8a 100%);
-                border-bottom: 3px solid rgba(96, 165, 250, 0.5);">
-        <h1 style="font-size: 3.5em; margin: 0; text-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);">
-            🕷️ AGENTIC HONEYPOT
+                background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+                border-bottom: none;">
+        <h1 style="font-size: 3em; margin: 0; color: #ffffff;">
+            🕷️ Honeypot Intelligence Platform
         </h1>
-        <p style="color: #c7d2fe; font-size: 1.3em; margin: 15px 0 5px 0; font-weight: 600;">
-            Advanced Scam Detection & Engagement System
+        <p style="color: #cbd5e0; font-size: 1.1em; margin: 12px 0 5px 0; font-weight: 500;">
+            Advanced Fraud Detection & Analysis System
         </p>
-        <p style="color: #a5b4fc; font-size: 1em; margin: 0;">
-            🤖 AI-Powered • 🎯 Real-time Detection • 📊 Analytics
+        <p style="color: #a0aec0; font-size: 0.95em; margin: 0;">
+            Enterprise-Grade Scam Detection and Real-Time Response
         </p>
     </div>
 """, unsafe_allow_html=True)
@@ -313,10 +326,10 @@ if "analysis_results" not in st.session_state:
 # Sidebar with Premium Design
 with st.sidebar:
     st.markdown("""
-    <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1)); 
-                border-radius: 12px; padding: 20px; margin-bottom: 20px; 
-                border: 2px solid rgba(96, 165, 250, 0.3);">
-        <h3 style="color: #60a5fa; margin-top: 0;">🎛️ CONTROL PANEL</h3>
+    <div style="background: #ffffff; 
+                border-radius: 8px; padding: 16px; margin-bottom: 20px; 
+                border: 1px solid #e1e8ed; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+        <h3 style="color: #2d3748; margin-top: 0; font-size: 1.2em;">📊 System Dashboard</h3>
     </div>
     """, unsafe_allow_html=True)
     
@@ -339,14 +352,14 @@ with st.sidebar:
     st.markdown("<div class='divider-line'></div>", unsafe_allow_html=True)
     
     st.markdown("""
-    <div style="color: #cbd5e1;">
-        <p style="font-weight: 600; color: #60a5fa; margin-bottom: 10px;">✨ FEATURES</p>
-        <ul style="margin: 0; padding-left: 20px;">
+    <div style="color: #2c3e50;">
+        <p style="font-weight: 600; color: #2d3748; margin-bottom: 10px; font-size: 0.95em;">✨ CAPABILITIES</p>
+        <ul style="margin: 0; padding-left: 20px; color: #4a5568; font-size: 0.9em;">
             <li>Real-time Detection</li>
-            <li>AI Responses</li>
-            <li>Message Analytics</li>
+            <li>AI Analysis</li>
+            <li>Message Tracking</li>
             <li>Confidence Scoring</li>
-            <li>History Tracking</li>
+            <li>Analytics Reports</li>
         </ul>
     </div>
     """, unsafe_allow_html=True)
@@ -354,11 +367,11 @@ with st.sidebar:
     st.markdown("<div class='divider-line'></div>", unsafe_allow_html=True)
     
     st.markdown("""
-    <div style="color: #cbd5e1;">
-        <p style="font-weight: 600; color: #a78bfa; margin-bottom: 5px;">⚙️ CONFIGURATION</p>
-        <p style="font-size: 0.9em; margin: 5px 0;">Model: Groq Llama 3.1</p>
-        <p style="font-size: 0.9em; margin: 5px 0;">Framework: Streamlit</p>
-        <p style="font-size: 0.9em; margin: 5px 0; color: #22c55e;">Status: 🟢 Active</p>
+    <div style="color: #2c3e50;">
+        <p style="font-weight: 600; color: #2d3748; margin-bottom: 5px; font-size: 0.95em;">⚙️ CONFIGURATION</p>
+        <p style="font-size: 0.85em; margin: 5px 0; color: #4a5568;">Model: Groq Llama 3.1</p>
+        <p style="font-size: 0.85em; margin: 5px 0; color: #4a5568;">Framework: Streamlit</p>
+        <p style="font-size: 0.85em; margin: 5px 0; color: #48bb78; font-weight: 500;">Status: 🟢 Active</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -413,8 +426,8 @@ with tab1:
             # Display scammer message
             st.markdown("""
             <div class="scam-card">
-                <p style="font-weight: 600; color: #ef4444; margin: 0 0 10px 0; font-size: 0.95em;">📧 INCOMING MESSAGE</p>
-                <p style="color: #fca5a5; font-family: monospace; font-size: 1em; margin: 0; line-height: 1.6;">""" + 
+                <p style="font-weight: 600; color: #c53030; margin: 0 0 10px 0; font-size: 0.95em;">📧 INCOMING MESSAGE</p>
+                <p style="color: #742a2a; font-family: monospace; font-size: 1em; margin: 0; line-height: 1.6;">""" + 
                 scammer_msg + 
                 """</p>
             </div>
@@ -433,21 +446,18 @@ with tab1:
                         st.markdown("""
                         <div class="metric-box" style="border-color: rgba(239, 68, 68, 0.6);">
                             <p style="margin: 0; font-size: 2em;">🚨</p>
-                            <p style="margin: 10px 0 0 0; font-weight: 700; color: #ef4444;">SCAM DETECTED</p>
+                            <p style="margin: 10px 0 0 0; font-weight: 700; color: #dc2626;">SCAM DETECTED</p>
                         </div>
                         """, unsafe_allow_html=True)
                     else:
                         st.markdown("""
                         <div class="metric-box" style="border-color: rgba(34, 197, 94, 0.6);">
                             <p style="margin: 0; font-size: 2em;">✅</p>
-                            <p style="margin: 10px 0 0 0; font-weight: 700; color: #22c55e;">LEGITIMATE</p>
+                            <p style="margin: 10px 0 0 0; font-weight: 700; color: #22863a;">LEGITIMATE</p>
                         </div>
                         """, unsafe_allow_html=True)
                 
                 with col_b:
-                    confidence = fraud_result['confidence']
-                    confidence_percent = confidence * 100
-                    color = "#ef4444" if confidence > 0.7 else "#f97316" if confidence > 0.5 else "#22c55e"
                     st.markdown(f"""
                     <div class="metric-box">
                         <p class="metric-label">CONFIDENCE SCORE</p>
@@ -462,7 +472,7 @@ with tab1:
                     st.markdown(f"""
                     <div class="metric-box">
                         <p class="metric-label">CATEGORY</p>
-                        <p style="font-size: 1.8em; margin: 15px 0; color: #a78bfa;">{category.upper()}</p>
+                        <p style="font-size: 1.8em; margin: 15px 0; color: #3182ce;">{category.upper()}</p>
                     </div>
                     """, unsafe_allow_html=True)
                 
@@ -473,8 +483,8 @@ with tab1:
                     honeypot_reply = st.session_state.honeypot_agent.reply(scammer_msg)
                     st.markdown("""
                     <div class="honeypot-card">
-                        <p style="font-weight: 600; color: #22c55e; margin: 0 0 10px 0; font-size: 0.95em;">🤖 HONEYPOT RESPONSE</p>
-                        <p style="color: #86efac; font-style: italic; font-size: 1em; margin: 0; line-height: 1.6;">""" + 
+                        <p style="font-weight: 600; color: #22863a; margin: 0 0 10px 0; font-size: 0.95em;">🤖 HONEYPOT RESPONSE</p>
+                        <p style="color: #355c3d; font-style: italic; font-size: 1em; margin: 0; line-height: 1.6;">""" + 
                         honeypot_reply + 
                         """</p>
                     </div>
@@ -541,14 +551,14 @@ with tab2:
                             st.markdown("""
                             <div class="metric-box" style="border-color: rgba(239, 68, 68, 0.6);">
                                 <p style="margin: 0; font-size: 2em;">🚨</p>
-                                <p style="margin: 10px 0 0 0; font-weight: 700; color: #ef4444;">SCAM</p>
+                                <p style="margin: 10px 0 0 0; font-weight: 700; color: #dc2626;">SCAM</p>
                             </div>
                             """, unsafe_allow_html=True)
                         else:
                             st.markdown("""
                             <div class="metric-box" style="border-color: rgba(34, 197, 94, 0.6);">
                                 <p style="margin: 0; font-size: 2em;">✅</p>
-                                <p style="margin: 10px 0 0 0; font-weight: 700; color: #22c55e;">SAFE</p>
+                                <p style="margin: 10px 0 0 0; font-weight: 700; color: #22863a;">SAFE</p>
                             </div>
                             """, unsafe_allow_html=True)
                     
@@ -567,7 +577,7 @@ with tab2:
                         st.markdown(f"""
                         <div class="metric-box">
                             <p class="metric-label">STAGE</p>
-                            <p style="font-size: 1.8em; margin: 15px 0; color: #a78bfa;">{fraud_result.get('stage', 'N/A').upper()[:8]}</p>
+                            <p style="font-size: 1.8em; margin: 15px 0; color: #3182ce;">{fraud_result.get('stage', 'N/A').upper()[:8]}</p>
                         </div>
                         """, unsafe_allow_html=True)
                     
@@ -577,8 +587,8 @@ with tab2:
                         honeypot_reply = st.session_state.honeypot_agent.reply(user_message)
                         st.markdown(f"""
                         <div class="honeypot-card">
-                            <p style="font-weight: 600; color: #22c55e; margin: 0 0 10px 0;">🤖 AI RESPONSE</p>
-                            <p style="color: #86efac; font-style: italic; margin: 0;">"{honeypot_reply}"</p>
+                            <p style="font-weight: 600; color: #22863a; margin: 0 0 10px 0;">🤖 AI RESPONSE</p>
+                            <p style="color: #355c3d; font-style: italic; margin: 0;">"{honeypot_reply}"</p>
                         </div>
                         """, unsafe_allow_html=True)
                     
@@ -605,12 +615,12 @@ with tab3:
             st.markdown(f"""
             <div class="conversation-item">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                    <span style="font-weight: 700; color: #60a5fa;">Message #{i}</span>
-                    <span style="font-size: 0.9em; color: #a0aec0;">Confidence: {confidence:.1%}</span>
+                    <span style="font-weight: 700; color: #2d3748;">Message #{i}</span>
+                    <span style="font-size: 0.9em; color: #718096;">Confidence: {confidence:.1%}</span>
                 </div>
-                <p style="margin: 8px 0; color: #e2e8f0; font-size: 0.95em;">{msg[:120]}...</p>
+                <p style="margin: 8px 0; color: #4a5568; font-size: 0.95em;">{msg[:120]}...</p>
                 <div style="display: flex; gap: 10px; margin-top: 10px;">
-                    <span style="background: linear-gradient(135deg, #ef4444, #dc2626) if {is_scam} else linear-gradient(135deg, #22c55e, #16a34a); 
+                    <span style="background: linear-gradient(135deg, #ef4444, #dc2626) if {is_scam} else linear-gradient(135deg, #48bb78, #38a169); 
                                  padding: 4px 12px; border-radius: 20px; color: white; font-size: 0.85em; font-weight: 600;">
                         {badge_color} {badge_text}
                     </span>
@@ -620,9 +630,9 @@ with tab3:
     else:
         st.markdown("""
         <div style="text-align: center; padding: 60px 20px;">
-            <p style="font-size: 2em; color: #94a3b8; margin: 0;">📭</p>
-            <p style="color: #94a3b8; font-size: 1.1em; margin: 10px 0;">No conversations yet</p>
-            <p style="color: #64748b; font-size: 0.95em;">Start analyzing messages to see them here!</p>
+            <p style="font-size: 2em; color: #cbd5e0; margin: 0;">📭</p>
+            <p style="color: #2d3748; font-size: 1.1em; margin: 10px 0;">No conversations yet</p>
+            <p style="color: #718096; font-size: 0.95em;">Start analyzing messages to see them here!</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -728,12 +738,12 @@ with tab4:
 # Footer
 st.markdown("""
     <div style="text-align: center; padding: 30px 20px; margin-top: 40px; 
-                border-top: 2px solid rgba(96, 165, 250, 0.2);">
-        <p style="color: #64748b; margin: 0; font-weight: 600;">
-            🕷️ <span style="color: #60a5fa;">AGENTIC HONEYPOT</span> v1.0 • Powered by Groq AI
+                border-top: 1px solid #e1e8ed; background: #f8f9fa;">
+        <p style="color: #2d3748; margin: 0; font-weight: 600; font-size: 1em;">
+            🕷️ <span style="color: #3182ce;">Honeypot Intelligence Platform</span> v1.0
         </p>
-        <p style="color: #475569; font-size: 0.9em; margin: 8px 0 0 0;">
-            🔒 Secure • 🚀 Fast • 🎯 Accurate • 📊 Advanced Analytics
+        <p style="color: #718096; font-size: 0.9em; margin: 8px 0 0 0;">
+            Enterprise Fraud Detection • Powered by Groq AI
         </p>
     </div>
 """, unsafe_allow_html=True)
