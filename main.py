@@ -375,11 +375,38 @@ tab1, tab2, tab3, tab4 = st.tabs(["🚀 Auto Generate", "✍️ Manual Input", "
 # Tab 1: Mock Scammer API with Confidence Score
 with tab1:
     st.markdown("### 📨 AUTO-GENERATED SCAM MESSAGES")
-    st.write("Click to generate and analyze realistic scam messages with confidence scoring")
     
-    col1, col2 = st.columns([3, 1])
+    col_main, col_sidebar = st.columns([2, 1])
     
-    with col1:
+    with col_sidebar:
+        st.markdown("### 📂 CATEGORIES")
+        st.markdown("""
+        🏦 **BANKING**
+        - Account alerts
+        - OTP requests
+        
+        💳 **PAYMENT**
+        - Card updates
+        - UPI scams
+        
+        🛡️ **TECH**
+        - Virus alerts
+        - Updates
+        
+        🎁 **PRIZE**
+        - Fake wins
+        - Lottery
+        
+        📈 **INVEST**
+        - Crypto scams
+        - Options
+        """)
+    
+    with col_main:
+    
+    with col_main:
+        st.write("Click to generate and analyze realistic scam messages:")
+        
         if st.button("🔄 GENERATE & ANALYZE", key="mock_fetch", use_container_width=True):
             # Generate message
             scammer_msg, category = MockScammerGenerator.generate()
@@ -471,101 +498,96 @@ with tab1:
                         st.write(f"Length: {len(scammer_msg)} characters")
                         st.write(f"Timestamp: {datetime.now().strftime('%H:%M:%S')}")
     
-    with col2:
-        st.markdown("### 📂 CATEGORIES")
-        st.markdown("""
-        🏦 **BANKING**
-        - Account alerts
-        - OTP requests
-        
-        💳 **PAYMENT**
-        - Card updates
-        - UPI scams
-        
-        🛡️ **TECH**
-        - Virus alerts
-        - Updates
-        
-        🎁 **PRIZE**
-        - Fake wins
-        - Lottery
-        
-        📈 **INVEST**
-        - Crypto scams
-        - Options
-        """)
+    with col_sidebar:
+        pass
 
 # Tab 2: Manual Input
 with tab2:
     st.markdown("### ✍️ MANUAL MESSAGE ANALYSIS")
     st.write("Paste or type any message to analyze:")
     
-    user_message = st.text_area(
-        "Message input:",
-        placeholder="Enter a message to analyze...",
-        height=140,
-        label_visibility="collapsed"
-    )
+    col1, col2 = st.columns([2, 1])
     
-    if st.button("🔍 ANALYZE MESSAGE", use_container_width=True):
-        if user_message.strip():
-            st.session_state.conversation_history.append(user_message)
-            
-            with st.spinner("Processing analysis..."):
-                fraud_result = st.session_state.fraud_agent.analyze(user_message)
-                st.session_state.analysis_results.append(fraud_result)
+    with col2:
+        st.markdown("### 💡 TIPS")
+        st.info("""
+        **Common Scam Indicators:**
+        - Urgent language
+        - Requests for OTP/passwords
+        - Suspicious links
+        - Impersonation
+        - Time pressure
+        """)
+    
+    with col1:
+        user_message = st.text_area(
+            "Message input:",
+            placeholder="Enter a message to analyze...",
+            height=140,
+            label_visibility="collapsed"
+        )
+        
+        if st.button("🔍 ANALYZE MESSAGE", use_container_width=True):
+            if user_message.strip():
+                st.session_state.conversation_history.append(user_message)
                 
-                # Results
-                col1, col2, col3 = st.columns(3)
-                
-                with col1:
+                with st.spinner("Processing analysis..."):
+                    fraud_result = st.session_state.fraud_agent.analyze(user_message)
+                    st.session_state.analysis_results.append(fraud_result)
+                    
+                    # Results
+                    col1, col2, col3 = st.columns(3)
+                    
+                    with col1:
+                        if fraud_result["is_scam"]:
+                            st.markdown("""
+                            <div class="metric-box" style="border-color: rgba(239, 68, 68, 0.6);">
+                                <p style="margin: 0; font-size: 2em;">🚨</p>
+                                <p style="margin: 10px 0 0 0; font-weight: 700; color: #ef4444;">SCAM</p>
+                            </div>
+                            """, unsafe_allow_html=True)
+                        else:
+                            st.markdown("""
+                            <div class="metric-box" style="border-color: rgba(34, 197, 94, 0.6);">
+                                <p style="margin: 0; font-size: 2em;">✅</p>
+                                <p style="margin: 10px 0 0 0; font-weight: 700; color: #22c55e;">SAFE</p>
+                            </div>
+                            """, unsafe_allow_html=True)
+                    
+                    with col2:
+                        confidence = fraud_result['confidence']
+                        confidence_percent = confidence * 100
+                        color = "#ef4444" if confidence > 0.7 else "#f97316" if confidence > 0.5 else "#22c55e"
+                        st.markdown(f"""
+                        <div class="metric-box">
+                            <p class="metric-label">CONFIDENCE</p>
+                            <p class="metric-value" style="color: {color};">{confidence_percent:.1f}%</p>
+                        </div>
+                        """, unsafe_allow_html=True)
+                    
+                    with col3:
+                        st.markdown(f"""
+                        <div class="metric-box">
+                            <p class="metric-label">STAGE</p>
+                            <p style="font-size: 1.8em; margin: 15px 0; color: #a78bfa;">{fraud_result.get('stage', 'N/A').upper()[:8]}</p>
+                        </div>
+                        """, unsafe_allow_html=True)
+                    
+                    st.markdown("<div class='divider-line'></div>", unsafe_allow_html=True)
+                    
                     if fraud_result["is_scam"]:
-                        st.markdown("""
-                        <div class="metric-box" style="border-color: rgba(239, 68, 68, 0.6);">
-                            <p style="margin: 0; font-size: 2em;">🚨</p>
-                            <p style="margin: 10px 0 0 0; font-weight: 700; color: #ef4444;">SCAM</p>
+                        honeypot_reply = st.session_state.honeypot_agent.reply(user_message)
+                        st.markdown(f"""
+                        <div class="honeypot-card">
+                            <p style="font-weight: 600; color: #22c55e; margin: 0 0 10px 0;">🤖 AI RESPONSE</p>
+                            <p style="color: #86efac; font-style: italic; margin: 0;">"{honeypot_reply}"</p>
                         </div>
                         """, unsafe_allow_html=True)
-                    else:
-                        st.markdown("""
-                        <div class="metric-box" style="border-color: rgba(34, 197, 94, 0.6);">
-                            <p style="margin: 0; font-size: 2em;">✅</p>
-                            <p style="margin: 10px 0 0 0; font-weight: 700; color: #22c55e;">SAFE</p>
-                        </div>
-                        """, unsafe_allow_html=True)
-                
-                with col2:
-                    confidence = fraud_result['confidence']
-                    confidence_percent = confidence * 100
-                    color = "#ef4444" if confidence > 0.7 else "#f97316" if confidence > 0.5 else "#22c55e"
-                    st.markdown(f"""
-                    <div class="metric-box">
-                        <p class="metric-label">CONFIDENCE</p>
-                        <p class="metric-value" style="color: {color};">{confidence_percent:.1f}%</p>
-                    </div>
-                    """, unsafe_allow_html=True)
-                
-                with col3:
-                    st.markdown(f"""
-                    <div class="metric-box">
-                        <p class="metric-label">STAGE</p>
-                        <p style="font-size: 1.8em; margin: 15px 0; color: #a78bfa;">{fraud_result.get('stage', 'N/A').upper()[:8]}</p>
-                    </div>
-                    """, unsafe_allow_html=True)
-                
-                st.markdown("<div class='divider-line'></div>", unsafe_allow_html=True)
-                
-                if fraud_result["is_scam"]:
-                    honeypot_reply = st.session_state.honeypot_agent.reply(user_message)
-                    st.markdown(f"""
-                    <div class="honeypot-card">
-                        <p style="font-weight: 600; color: #22c55e; margin: 0 0 10px 0;">🤖 AI RESPONSE</p>
-                        <p style="color: #86efac; font-style: italic; margin: 0;">"{honeypot_reply}"</p>
-                    </div>
-                    """, unsafe_allow_html=True)
-                
-                with st.expander("📋 Full Results"):
-                    st.json(fraud_result)
+                    
+                    with st.expander("📋 Full Results"):
+                        st.json(fraud_result)
+            else:
+                st.warning("⚠️ Please enter a message first!")
         else:
             st.warning("⚠️ Please enter a message first!")
 
