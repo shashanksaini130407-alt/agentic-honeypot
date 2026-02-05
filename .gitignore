@@ -1,0 +1,7 @@
+data/processed/
+data/interim/
+data/raw/.env
+.env.local
+__pycache__/
+*.pyc
+venv/
