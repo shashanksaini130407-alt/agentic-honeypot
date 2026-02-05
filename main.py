@@ -329,7 +329,7 @@ with st.sidebar:
     <div style="background: #ffffff; 
                 border-radius: 8px; padding: 16px; margin-bottom: 20px; 
                 border: 1px solid #e1e8ed; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
-        <h3 style="color: #000000 !important; margin-top: 0; font-size: 1.2em;">📊 System Dashboard</h3>
+        <h3 style="color: #2d3748 !important; margin-top: 0; font-size: 1.2em;">📊 System Dashboard</h3>
     </div>
     """, unsafe_allow_html=True)
     
@@ -352,7 +352,7 @@ with st.sidebar:
     st.markdown("<div class='divider-line'></div>", unsafe_allow_html=True)
     
     st.markdown("""
-    <div style="color: #000000;">
+    <div style="color: #2d3748;">
         <p style="font-weight: 800; color: #000000; margin-bottom: 10px; font-size: 0.95em;">✨ CAPABILITIES</p>
         <ul style="margin: 0; padding-left: 20px; color: #000000; font-size: 0.9em; font-weight: 700;">
             <li>Real-time Detection</li>
