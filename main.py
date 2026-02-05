@@ -18,218 +18,265 @@ if not os.getenv("GROQ_API_KEY"):
 from agent.fraud_agent import FraudDetectionAgent
 from agent.llm_honeypot_agent import LLMHoneypotAgent
 
-# Advanced Custom CSS for Professional Design
+# ===== PROFESSIONAL STREAMLIT THEMING =====
 st.markdown("""
 <style>
-    /* Base styling */
-    body, html, .main {
-        background: #f8f9fa;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        color: #000000;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
     
-    /* Sidebar */
+    /* Root theme */
+    html, body, [data-testid="stAppViewContainer"] {
+        background: linear-gradient(135deg, #f5f7fa 0%, #eef2f5 100%);
+        font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
+        color: #1a202c;
+    }
+    
+    /* Sidebar Styling */
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #ffffff 0%, #f5f7fa 100%);
-        border-right: 1px solid #e1e8ed;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafb 100%);
+        border-right: 1px solid #e2e8f0;
     }
     
-    /* Main headers */
+    [data-testid="stSidebar"] > div:first-child {
+        padding-top: 20px;
+    }
+    
+    /* Headers */
     h1 {
         color: #ffffff !important;
-        font-weight: 800;
-        letter-spacing: -0.5px;
-        font-size: 2.5em !important;
-        margin-bottom: 10px !important;
+        font-weight: 900 !important;
+        font-size: 2.8em !important;
+        letter-spacing: -1px !important;
+        margin: 0 !important;
     }
     
     h2 {
-        color: #000000;
-        font-weight: 700;
-        font-size: 1.8em !important;
-        margin-bottom: 15px !important;
+        color: #0f172a !important;
+        font-weight: 700 !important;
+        font-size: 1.6em !important;
+        margin: 20px 0 15px 0 !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding-bottom: 10px;
     }
     
     h3 {
-        color: #000000;
-        font-weight: 800;
-        font-size: 1.3em !important;
-        margin-top: 20px !important;
+        color: #1e293b !important;
+        font-weight: 600 !important;
+        font-size: 1.2em !important;
+        margin: 15px 0 10px 0 !important;
     }
     
-    /* Tabs styling */
+    /* Tabs */
     .stTabs [data-baseweb="tab-list"] {
-        background: #ffffff;
-        border-bottom: 2px solid #e1e8ed;
-        border-radius: 0px;
-        padding: 0px;
+        background: transparent;
+        border-bottom: 2px solid #e2e8f0;
+        gap: 0;
+        margin-bottom: 20px;
     }
     
     .stTabs [data-baseweb="tab"] {
-        color: #000000;
-        border-radius: 0px;
+        color: #64748b !important;
+        border: none;
+        border-radius: 0;
         font-weight: 600;
-        padding: 14px 20px;
-        transition: all 0.3s ease;
+        padding: 12px 24px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         border-bottom: 3px solid transparent;
     }
     
     .stTabs [aria-selected="true"] {
-        background: transparent;
-        color: #2d3748;
-        border-bottom: 3px solid #3182ce !important;
+        color: #1e40af !important;
+        border-bottom-color: #1e40af !important;
+        background: rgba(30, 64, 175, 0.05);
     }
     
     /* Buttons */
     .stButton > button {
-        background: #3182ce;
+        background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
         color: white;
-        font-weight: 600;
         border: none;
-        border-radius: 6px;
-        padding: 10px 24px;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 8px rgba(49, 130, 206, 0.15);
-        text-transform: none;
-        letter-spacing: 0px;
+        border-radius: 8px;
+        font-weight: 700;
+        padding: 12px 28px;
         font-size: 0.95em;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
     }
     
     .stButton > button:hover {
-        background: #2c5aa0;
-        box-shadow: 0 4px 12px rgba(49, 130, 206, 0.25);
+        background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%);
+        box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
+        transform: translateY(-2px);
     }
     
-    /* Input boxes */
+    .stButton > button:active {
+        transform: translateY(0);
+    }
+    
+    /* Input Controls */
     textarea, input {
         background-color: #ffffff !important;
-        color: #000000 !important;
-        border: 1px solid #cbd5e0 !important;
-        border-radius: 6px !important;
-        padding: 12px !important;
-        font-size: 1em !important;
+        color: #1a202c !important;
+        border: 2px solid #e2e8f0 !important;
+        border-radius: 8px !important;
+        padding: 12px 16px !important;
+        font-size: 0.95em !important;
         transition: all 0.3s ease !important;
+        font-family: inherit !important;
     }
     
     textarea:focus, input:focus {
-        border-color: #3182ce !important;
-        box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1) !important;
+        border-color: #1e40af !important;
+        box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.1) !important;
+        outline: none !important;
     }
     
-    /* Premium Cards */
-    .premium-card {
-        background: #ffffff;
-        border: 1px solid #e1e8ed;
-        border-radius: 8px;
+    /* Text */
+    p, span, li {
+        color: #334155;
+    }
+    
+    /* Main Card Container */
+    .metric-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
         padding: 24px;
-        margin: 15px 0;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    .premium-card:hover {
+    .metric-card:hover {
         border-color: #cbd5e0;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transform: translateY(-4px);
     }
     
-    /* Scam message card */
-    .scam-card {
-        background: #fff5f5;
-        border: 1px solid #fc8181;
-        border-radius: 8px;
-        padding: 16px;
-        margin: 12px 0;
+    /* Status Cards */
+    .status-danger {
+        background: linear-gradient(135deg, #fee2e2 0%, #fef2f2 100%);
+        border: 2px solid #fca5a5;
+        border-radius: 12px;
     }
     
-    /* Honeypot response card */
-    .honeypot-card {
-        background: #f0fff4;
-        border: 1px solid #9ae6b4;
-        border-radius: 8px;
-        padding: 16px;
-        margin: 12px 0;
+    .status-success {
+        background: linear-gradient(135deg, #dcfce7 0%, #f0fdf4 100%);
+        border: 2px solid #86efac;
+        border-radius: 12px;
     }
     
-    /* Confidence meter */
-    .confidence-meter {
-        background: #e2e8f0;
-        border-radius: 4px;
-        overflow: hidden;
-        height: 8px;
-        margin: 10px 0;
+    .status-warning {
+        background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%);
+        border: 2px solid #fde047;
+        border-radius: 12px;
     }
     
-    .confidence-fill {
-        height: 100%;
-        background: linear-gradient(90deg, #f56565 0%, #ed8936 50%, #48bb78 100%);
-        transition: width 0.6s ease;
-    }
-    
-    /* Metric cards */
-    .metric-box {
-        background: #ffffff;
-        border: 1px solid #e1e8ed;
-        border-radius: 8px;
-        padding: 16px;
-        text-align: center;
-        transition: all 0.3s ease;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    }
-    
-    .metric-box:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    }
-    
-    .metric-value {
-        font-size: 2.2em;
-        font-weight: 800;
-        color: #000000;
-        margin: 10px 0;
-    }
-    
-    .metric-label {
-        color: #000000;
-        font-size: 0.85em;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    
-    /* Conversation item */
-    .conversation-item {
-        background: #ffffff;
-        border-left: 3px solid #3182ce;
-        border-radius: 4px;
-        padding: 12px;
-        margin: 10px 0;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
-    }
-    
-    .conversation-item:hover {
-        border-left-color: #2c5aa0;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-    }
-    
-    /* Divider */
-    .divider-line {
+    /* Professional Divider */
+    .divider {
         height: 1px;
-        background: #e1e8ed;
-        margin: 20px 0;
+        background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+        margin: 24px 0;
     }
+    
+    /* User Message Box */
+    .message-box-scam {
+        background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+        border-left: 4px solid #dc2626;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 12px 0;
+    }
+    
+    .message-box-safe {
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        border-left: 4px solid #16a34a;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 12px 0;
+    }
+    
+    /* AI Response Box */
+    .ai-response {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        border-left: 4px solid #0284c7;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 12px 0;
+        font-style: italic;
+    }
+    
+    /* Confidence Bar */
+    .confidence-bar {
+        background: #e5e7eb;
+        border-radius: 8px;
+        height: 8px;
+        overflow: hidden;
+        margin: 12px 0;
+    }
+    
+    /* Badge Styles */
+    .badge {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 0.85em;
+        letter-spacing: 0.3px;
+    }
+    
+    .badge-danger {
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
+        color: white;
+    }
+    
+    .badge-success {
+        background: linear-gradient(135deg, #16a34a, #15803d);
+        color: white;
+    }
+    
+    .badge-warning {
+        background: linear-gradient(135deg, #ea580c, #c2410c);
+        color: white;
+    }
+    
     
     /* Expander */
     .streamlit-expanderHeader {
-        background: #f7fafc;
-        border-radius: 6px;
-        padding: 12px !important;
+        background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+        border-radius: 8px;
+        padding: 14px !important;
+        font-weight: 600;
+        color: #1e293b;
+        border: 1px solid #cbd5e0;
     }
     
-    /* Text styling */
-    p, span, li {
-        color: #1a202c;
+    .streamlit-expanderHeader:hover {
+        background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%);
     }
+    
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: #cbd5e0;
+        border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+    }
+    
 </style>
 """, unsafe_allow_html=True)
 
@@ -287,26 +334,32 @@ class MockScammerGenerator:
 
 # Page configuration
 st.set_page_config(
-    page_title="🕷️ Agentic Honeypot",
+    page_title="Honeypot Intelligence Platform",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="expanded",
+    initial_sidebar_width=280
 )
 
-# Header Section with Premium Graphics
+# Professional Header
 st.markdown("""
-    <div style="text-align: center; padding: 40px 20px; margin: -20px -20px 0 -20px; 
-                background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-                border-bottom: none;">
-        <h1 style="font-size: 3em; margin: 0; color: #ffffff !important;">
-            🕷️ <span style="color: #ffffff !important; font-weight: 800;">Honeypot Intelligence Platform</span>
-        </h1>
-        <p style="color: #cbd5e0; font-size: 1.1em; margin: 12px 0 5px 0; font-weight: 500;">
-            Advanced Fraud Detection & Analysis System
+<div style="background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%); 
+            padding: 40px 0; margin: -20px -20px 30px -20px; text-align: center;
+            box-shadow: 0 10px 40px rgba(30, 64, 175, 0.2);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9em; margin: 0 0 10px 0; letter-spacing: 2px; text-transform: uppercase;">
+            🔐 SECURITY SUITE
         </p>
-        <p style="color: #a0aec0; font-size: 0.95em; margin: 0;">
-            Enterprise-Grade Scam Detection and Real-Time Response
+        <h1 style="margin: 0 0 10px 0; font-size: 3.2em; color: #ffffff;">
+            🕷️ Honeypot Intelligence
+        </h1>
+        <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.05em; margin: 0; font-weight: 500;">
+            Enterprise Fraud Detection & Analysis Platform
+        </p>
+        <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9em; margin: 8px 0 0 0;">
+            Real-time scam detection powered by advanced AI
         </p>
     </div>
+</div>
 """, unsafe_allow_html=True)
 
 # Initialize agents and session state
@@ -317,19 +370,24 @@ if "controller_initialized" not in st.session_state:
     st.session_state.analysis_results = []
     st.session_state.controller_initialized = True
 
-# Ensure conversation_history exists
 if "conversation_history" not in st.session_state:
     st.session_state.conversation_history = []
 if "analysis_results" not in st.session_state:
     st.session_state.analysis_results = []
 
-# Sidebar with Premium Design
+# Professional Sidebar
 with st.sidebar:
     st.markdown("""
-    <div style="background: #ffffff; 
-                border-radius: 8px; padding: 16px; margin-bottom: 20px; 
-                border: 1px solid #e1e8ed; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
-        <h3 style="color: #2d3748; margin-top: 0; font-size: 1.2em;">📊 System Dashboard</h3>
+    <div style="background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+                border-radius: 12px; padding: 20px; margin-bottom: 20px;
+                box-shadow: 0 4px 15px rgba(30, 64, 175, 0.2);">
+        <p style="color: #ffffff; font-size: 0.8em; margin: 0 0 5px 0; 
+                 text-transform: uppercase; letter-spacing: 1px; font-weight: 700;">
+            📊 Dashboard
+        </p>
+        <h3 style="color: #ffffff; margin: 10px 0 15px 0; font-size: 1.1em !important;">
+            System Overview
+        </h3>
     </div>
     """, unsafe_allow_html=True)
     
