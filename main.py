@@ -24,7 +24,8 @@ if user_key != MY_API_KEY:
     st.warning("⚠️ Invalid API Key. Please enter the correct key to continue.")
     st.stop()
 
-# om agent.fraud_agent import FraudDetectionAgent
+# Import your existing agents
+from agent.fraud_agent import FraudDetectionAgent
 from agent.llm_honeypot_agent import LLMHoneypotAgent
 
 # Advanced Custom CSS for Professional Design
